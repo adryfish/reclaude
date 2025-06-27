@@ -35,7 +35,7 @@ docker-compose up -d
 ### 二进制文件
 1. 下载适用于您平台的二进制文件。
 <!-- - [Windows](https://example.com/windows-reclaude) -->
-- [Linux 下载](https://github.com/adryfish/reclaude/releases/download/1.9.2/reclaude_linux)
+- [Linux 下载](https://github.com/adryfish/reclaude/releases/download/1.11.1/reclaude_linux)
 <!-- - [macOS](https://example.com/macos-reclaude) -->
 2. 运行命令：
    ```shell
@@ -71,6 +71,8 @@ docker-compose up -d
 | MAIN_SERVER_URL | 主服务器地址，使用自定义域名必须设置，如https://demo.reclaude.com | http://localhost:4000 |
 | CONTENT_SERVER_URL | content服务器地址，使用自定义域名建议设置，例如https://content.reclaude.com | http://localhost:4010 |
 | RECLAUDE_SECRET | 一个加密的SECRET，没有设置则随机生成一个，但每次重启session会失效 | 无 |
+| RECLAUDE_SHOW_SESSION_KEY | 是否返回sessionKey | true |
+| RECLAUDE_DISABLE_ADMIN_FEATURE | 设置则不能打开setting中的账单等敏感页面，对应的接口也会屏蔽 | false |
 
 CONTENT服务相关变量可以不配置，不配置预览功能无法使用，对主要功能没有影响。本地默认无法预览
 
@@ -94,6 +96,21 @@ curl -X POST 'http://localhost:4000/manage-api/auth/oauth_token' \
 ```text
 /login_token?session_key=sk-xxx
 ```
+
+### 带指纹的 OAuth 接口
+```shell
+curl -X POST 'http://localhost:4000/reclaude/auth/oauth_token' \
+-H 'Content-Type: application/json' \
+-d '{
+    "session_key": "sk-ant-sid01-xxx",
+    "unique_name": "test",
+    "expires_in": 600,
+    "proxy_server": "代理服务器(可选)",
+    "fingerprint_emulation": "目前是chrome_133,暂时不支持修改(可选)"
+    "fingerprint_os": "操作系统，如windows, macos, linux(可选)"
+}'
+```
+
 
 ## 用户交流
 
