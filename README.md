@@ -35,7 +35,7 @@ docker-compose up -d
 ### 二进制文件
 1. 下载适用于您平台的二进制文件。
 <!-- - [Windows](https://example.com/windows-reclaude) -->
-- [Linux 下载](https://github.com/adryfish/reclaude/releases/download/1.11.1/reclaude_linux)
+- [Linux 下载](https://github.com/adryfish/reclaude/releases/download/1.11.2/reclaude_linux)
 <!-- - [macOS](https://example.com/macos-reclaude) -->
 2. 运行命令：
    ```shell
